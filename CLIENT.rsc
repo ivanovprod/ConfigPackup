@@ -1,6 +1,6 @@
 # may/29/2015 13:17:50 by RouterOS 6.27
 # software id = BB4M-7R5H
-#ssss
+#
 /interface bridge
 add name=bridge1
 /interface wireless

@@ -1,6 +1,6 @@
 # may/29/2015 13:18:38 by RouterOS 6.27
 # software id = Q6JA-7VF6
-#yoyoy
+#
 /interface bridge
 add name=bridge1
 /interface wireless
