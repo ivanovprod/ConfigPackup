@@ -1,6 +1,6 @@
 # may/29/2015 12:42:24 by RouterOS 6.27
 # software id = VB9P-23PH
-#
+#vvv
 /interface bridge
 add admin-mac=D4:CA:6D:DA:90:21 auto-mac=no name=bridge-local
 /interface ethernet
