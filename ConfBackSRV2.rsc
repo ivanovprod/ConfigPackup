@@ -1,4 +1,4 @@
-# may/22/2015 09:28:37 by RouterOS 6.27
+# may/29/2015 11:54:06 by RouterOS 6.27
 # software id = VB9P-23PH
 #
 /interface bridge
@@ -235,15 +235,12 @@ add name=backup_send policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source="tool e-\
     mail send from=\"home@geochita.ru\" server=213.180.193.38 port=465 user=ho\
     me@geochita.ru password=89242729134St to=report@geochita.ru body=\"Weekly \
-    backup\" subject=\"BACKUP\" file=mikrotik.backup\r\
+    backup\" subject=\"BACKUP\" file=ConfBack.rsc\r\
     \n"
 add name=backup policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source=\
-    "/file remove mikrotik.backup\r\
-    \n/system backup save name=mikrotik"
-add name=BackupConfigTXT policy=\
-    ftp,reboot,read,write,policy,test,password,sniff,sensitive source=\
-    "export file=/backup/config_beckup_20121030.rsc"
+    "file remove ConfBackSRV.rsc\r\
+    \nexport file=ConfBackSRV.rsc"
 add name=restartPptp policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source=" /inter\
     face pptp-server disable 1;\r\
