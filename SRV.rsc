@@ -1,4 +1,4 @@
-# may/29/2015 11:54:06 by RouterOS 6.27
+# may/29/2015 12:42:24 by RouterOS 6.27
 # software id = VB9P-23PH
 #
 /interface bridge
@@ -173,7 +173,7 @@ set enabled=yes interfaces=bridge-local
 /ip smb shares
 add directory=/backup name=Backup
 /ip smb users
-add name=Backup password=89242729134St read-only=no
+add name=admin password=89242729134St read-only=no
 /ip traffic-flow
 set enabled=yes interfaces=ether1-gateway
 /ip upnp
@@ -235,12 +235,12 @@ add name=backup_send policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source="tool e-\
     mail send from=\"home@geochita.ru\" server=213.180.193.38 port=465 user=ho\
     me@geochita.ru password=89242729134St to=report@geochita.ru body=\"Weekly \
-    backup\" subject=\"BACKUP\" file=ConfBack.rsc\r\
+    backup\" subject=\"BACKUP\" file=/backup/SRV.rsc\r\
     \n"
 add name=backup policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source=\
-    "file remove ConfBackSRV.rsc\r\
-    \nexport file=ConfBackSRV.rsc"
+    "file remove backup/SRV.rsc \r\
+    \nexport file=backup/SRV.rsc "
 add name=restartPptp policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source=" /inter\
     face pptp-server disable 1;\r\
