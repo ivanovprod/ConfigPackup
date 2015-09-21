@@ -1,4 +1,4 @@
-# aug/10/2015 09:00:00 by RouterOS 6.27
+# sep/14/2015 09:00:00 by RouterOS 6.27
 # software id = BB4M-7R5H
 #
 /interface bridge
