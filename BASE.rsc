@@ -1,4 +1,4 @@
-# oct/19/2015 09:00:01 by RouterOS 6.27
+# oct/26/2015 09:00:01 by RouterOS 6.27
 # software id = Q6JA-7VF6
 #
 /interface bridge
