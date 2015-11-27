@@ -1,14 +1,14 @@
-# oct/26/2015 09:00:00 by RouterOS 6.27
+# nov/23/2015 09:00:00 by RouterOS 6.33.1
 # software id = BB4M-7R5H
 #
 /interface bridge
 add name=bridge1
 /interface wireless
 set [ find default-name=wlan1 ] adaptive-noise-immunity=client-mode band=\
-    5ghz-onlyn basic-rates-a/g="" channel-width=20/40mhz-ht-below disabled=no \
-    frequency=5485 frequency-mode=superchannel ht-guard-interval=long \
-    hw-retries=2 l2mtu=2290 mode=station-wds mtu=1492 multicast-helper=full \
-    name=wlan1-gateway nv2-preshared-key=89242729134St nv2-security=enabled \
+    5ghz-onlyn basic-rates-a/g="" channel-width=20/40mhz-eC disabled=no \
+    frequency=5485 frequency-mode=superchannel guard-interval=long \
+    hw-retries=2 mode=station-wds mtu=1492 multicast-helper=full name=\
+    wlan1-gateway nv2-preshared-key=89242729134St nv2-security=enabled \
     scan-list=5485 supported-rates-a/g="" tx-power=11 tx-power-mode=\
     all-rates-fixed wds-default-bridge=bridge1 wds-mode=dynamic \
     wireless-protocol=nv2
@@ -20,6 +20,8 @@ set [ find default-name=ether1 ] advertise=\
 set ether1-local discover=no
 set wlan1-gateway discover=no
 set bridge1 discover=no
+/ip ipsec proposal
+set [ find default=yes ] enc-algorithms=aes-128-cbc
 /queue type
 set 1 pfifo-limit=10000
 set 2 kind=pfifo pfifo-limit=10000
@@ -66,10 +68,12 @@ add interval=1w name=backup on-event="/system script run backup" policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive start-date=\
     may/25/2015 start-time=09:00:00
 /system script
-add name=backup policy=\
+add name=backup owner=admin policy=\
     ftp,reboot,read,write,policy,test,password,sniff,sensitive source=\
     "file remove backup/CLIENT.rsc \r\
     \nexport file=backup/CLIENT.rsc "
+/system upgrade upgrade-package-source
+add address=192.168.88.3 user=admin
 /tool mac-server
 set [ find default=yes ] disabled=yes
 add interface=ether1-local
